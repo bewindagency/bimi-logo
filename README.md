@@ -18,3 +18,27 @@ To publish and host your logo publicly:
 3. Click **Save**.
 
 GitHub Pages will generate a public URL such as:
+https://<your-username>.github.io/bimi-logo/bewind_bimi_logo_margin.svg
+
+Ensure that when you open the link, the SVG displays directly in your browser.
+
+## DNS BIMI Record (Porkbun)
+Add a new TXT record:
+
+| Field | Value |
+|-------|-------|
+| **Host** | `default._bimi` |
+| **Type** | `TXT` |
+| **Value** | `v=BIMI1; l=https://<your-username>.github.io/bimi-logo/bewind_bimi_logo_margin.svg; a=;` |
+| **TTL** | `300` |
+
+Replace `<your-username>` with your GitHub username.
+
+## Requirements
+Ensure that:
+- SPF ✅ is correctly set (`include:zohomail.com`)
+- DKIM ✅ is verified
+- DMARC ✅ exists (e.g. `v=DMARC1; p=none; rua=mailto:dmarc@bewindagency.com;`)
+
+Once your domain reputation improves (after warm-up), Gmail and Yahoo may display your logo automatically.  
+For guaranteed display, a **VMC (Verified Mark Certificate)** is required (optional, paid).
